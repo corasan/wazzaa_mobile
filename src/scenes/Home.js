@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, AsyncStorage, TouchableHighlight } from 'react-native';
-import app from '../firebaseInit';
+import app from '../../firebaseInit';
 
 export default class Home extends Component {
     constructor(props) {
@@ -22,8 +22,6 @@ export default class Home extends Component {
                 this.props.navigator.replace({name: 'Login'});
             }
         })
-        // .then(() => {
-        // });
     }
     render() {
         return (

@@ -12,8 +12,8 @@ import {
   View,
   Navigator
 } from 'react-native';
-import Login from './components/Login';
-import Home from './components/Home';
+import Login from './src/scenes/Login';
+import Home from './src/scenes/Home';
 import app from './firebaseInit';
 
 class wazzaa_mobile extends Component {

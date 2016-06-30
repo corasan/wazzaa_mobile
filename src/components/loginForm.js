@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import app from '../firebaseInit';
+import app from '../../firebaseInit';
 import { View,
     TouchableHighlight,
     Text,
@@ -10,7 +10,7 @@ import { View,
 } from 'react-native';
 import TextInput from 'react-native-md-textinput';
 
-export default class Login extends Component {
+export default class LoginForm extends Component {
     state: {
         email: String,
         password: String
@@ -19,20 +19,10 @@ export default class Login extends Component {
         super(props);
         this.state = {
             email: '',
-            password: '',
-            visible: false
+            password: ''
         }
     }
-    componentWillMount() {
-        AsyncStorage.getItem('User', (err, result) => {
-            if(result) {
-                this.props.navigator.replace({name: 'Home'});
-            }
-        });
-    }
-    setModalVisible = (visible) => {
-        this.setState({visible: visible});
-    }
+
     handleEmail = (email) => {
         this.setState({email});
     }
@@ -44,12 +34,12 @@ export default class Login extends Component {
         app.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((data) => {
             AsyncStorage.setItem('User', JSON.stringify(data));
-        }).then(() => {
             this.props.navigator.push({name: 'Home'});
         }).catch(function(error) {
             Alert.alert('Login Error', error.message);
         });
     }
+
     render() {
         return (
             <View style={styles.loginContainer}>
@@ -98,4 +88,4 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     }
-})
+});
