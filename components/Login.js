@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Actions, AsyncStorage } from 'react-native-router-flux';
 import app from '../firebaseInit';
 import { View,
     TouchableHighlight,
     Text,
     StyleSheet,
-    TextInput,
-    Alert
+    Alert,
+    ScrollView,
+    AsyncStorage
 } from 'react-native';
+import TextInput from 'react-native-md-textinput';
 
 export default class Login extends Component {
     state: {
@@ -22,6 +23,13 @@ export default class Login extends Component {
             visible: false
         }
     }
+    componentWillMount() {
+        AsyncStorage.getItem('User', (err, result) => {
+            if(result) {
+                this.props.navigator.replace({name: 'Home'});
+            }
+        });
+    }
     setModalVisible = (visible) => {
         this.setState({visible: visible});
     }
@@ -31,31 +39,42 @@ export default class Login extends Component {
     handlePassword = (password) => {
         this.setState({password});
     }
-    navigate() {
-        this.props.navigator.push({
-            name: 'Home'
-        });
-    }
+
     login = () => {
         app.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then( (data) => {
+        .then((data) => {
+            AsyncStorage.setItem('User', JSON.stringify(data));
+        }).then(() => {
             this.props.navigator.push({name: 'Home'});
-            // AsyncStorage.setItem()
         }).catch(function(error) {
-            console.log(error.message); // TODO: Make modal appear with error
             Alert.alert('Login Error', error.message);
         });
     }
     render() {
         return (
             <View style={styles.loginContainer}>
-                <TextInput style={styles.input} placeholder="Email" value={this.state.email} onChangeText={this.handleEmail}/>
-                <TextInput style={styles.input} placeholder="Password" value={this.state.password}
-                    onChangeText={this.handlePassword}
-                    secureTextEntry={true}
-                />
+                <ScrollView>
+                    <TextInput
+                        wrapperStyle={{width: 272, marginBottom: 20}}
+                        label="Email" highlightColor={'#1ABC9C'}
+                        value={this.state.email} onChangeText={this.handleEmail}
+                        inputStyle={{paddingBottom: 2, paddingTop: 2, fontSize: 18}}
+                        labelStyle={{fontSize: 16}}
+                    />
+                    <TextInput
+                        wrapperStyle={{width: 272, marginBottom: 20}}
+                        label="Password" highlightColor={'#1ABC9C'}
+                        value={this.state.password} onChangeText={this.handlePassword}
+                        secureTextEntry={true}
+                        inputStyle={{paddingBottom: 2, paddingTop: 2, fontSize: 18}}
+                        labelStyle={{fontSize: 16}}
+                    />
+                </ScrollView>
                 <TouchableHighlight style={styles.loginBtn} onPress={this.login}>
                     <Text style={{fontSize: 18, color: 'white'}}>Login</Text>
+                </TouchableHighlight>
+                <TouchableHighlight onPress={() => {this.props.navigator.push({name: 'Home'});}}>
+                    <Text style={{fontSize: 18, marginTop: 20, color: '#1ABC9C'}}>Sign up!</Text>
                 </TouchableHighlight>
             </View>
         )
@@ -67,11 +86,8 @@ const styles = StyleSheet.create({
         marginTop: 80,
         alignItems: 'center'
     },
-    input: {
+    wrapper: {
         width: 272,
-        paddingLeft: 8,
-        paddingBottom: 5,
-        fontSize: 18,
         marginBottom: 20
     },
     loginBtn: {
