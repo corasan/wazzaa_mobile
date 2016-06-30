@@ -11,21 +11,17 @@ import {
   Text,
   View
 } from 'react-native';
+import { Router, Scene } from 'react-native-router-flux';
+import Login from './components/Login';
+import Home from './components/Home';
 
 class wazzaa_mobile extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Router sceneStyle={styles.container}>
+          <Scene key="login" component={Login} title="Login"/>
+          <Scene key="home" component={Home}/>
+      </Router>
     );
   }
 }
@@ -33,9 +29,7 @@ class wazzaa_mobile extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginTop: 60
   },
   welcome: {
     fontSize: 20,
