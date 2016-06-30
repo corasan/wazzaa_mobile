@@ -9,21 +9,30 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
-import { Router, Scene } from 'react-native-router-flux';
 import Login from './components/Login';
 import Home from './components/Home';
 
 class wazzaa_mobile extends Component {
-  render() {
-    return (
-      <Router sceneStyle={styles.container}>
-          <Scene key="login" component={Login} title="Login"/>
-          <Scene key="home" component={Home}/>
-      </Router>
-    );
-  }
+    renderScene = (route, navigator) => {
+        switch(route.name) {
+            case 'Login':
+                return <Login navigator={navigator}/>
+            case 'Home':
+                return <Home navigator={navigator}/>
+        }
+    }
+    render() {
+        return (
+            <Navigator
+                style={styles.container}
+                initialRoute={{name: 'Login', index: 0}}
+                renderScene={this.renderScene}
+            />
+        );
+    }
 }
 
 const styles = StyleSheet.create({

@@ -29,12 +29,15 @@ export default class Login extends Component {
     handlePassword = (password) => {
         this.setState({password});
     }
-
+    navigate() {
+        this.props.navigator.push({
+            name: 'Home'
+        });
+    }
     login = () => {
         app.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then( (data) => {
-            console.log(app.auth().currentUser);
-            // Actions.home({email: app.auth().currentUser.email});
+            this.props.navigator.push({name: 'Home'});
             // AsyncStorage.setItem()
         }).catch(function(error) {
             console.log(error.message);

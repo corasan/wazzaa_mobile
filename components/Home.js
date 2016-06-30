@@ -6,7 +6,7 @@ export default class Home extends Component {
     render() {
         return (
             <View>
-                <Text>{this.props.email}</Text>
+                <Text>{app.auth().currentUser.email}</Text>
             </View>
         )
     }
