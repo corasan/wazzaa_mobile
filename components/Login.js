@@ -5,7 +5,8 @@ import { View,
     TouchableHighlight,
     Text,
     StyleSheet,
-    TextInput
+    TextInput,
+    Alert
 } from 'react-native';
 
 export default class Login extends Component {
@@ -17,11 +18,12 @@ export default class Login extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            visible: false
         }
     }
-    componentWillMount() {
-        console.log("HEYYY");
+    setModalVisible = (visible) => {
+        this.setState({visible: visible});
     }
     handleEmail = (email) => {
         this.setState({email});
@@ -40,7 +42,8 @@ export default class Login extends Component {
             this.props.navigator.push({name: 'Home'});
             // AsyncStorage.setItem()
         }).catch(function(error) {
-            console.log(error.message);
+            console.log(error.message); // TODO: Make modal appear with error
+            Alert.alert('Login Error', error.message);
         });
     }
     render() {
