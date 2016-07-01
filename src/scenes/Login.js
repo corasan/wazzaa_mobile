@@ -5,9 +5,11 @@ import { View,
     Text,
     StyleSheet,
     Alert,
-    AsyncStorage
+    AsyncStorage,
+    ActivityIndicator
 } from 'react-native';
 import TextInput from 'react-native-md-textinput';
+import Overlay from 'react-native-overlay';
 
 export default class Login extends Component {
     state: {
@@ -18,13 +20,21 @@ export default class Login extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            animating: true
         }
     }
+
     componentWillMount() {
         AsyncStorage.getItem('User', (err, result) => {
             if(result) {
-                this.props.navigator.replace({name: 'Home'});
+                this.setState({animating: true});
+                setTimeout(() => {
+                    this.setState({animating: !this.state.animating});
+                    this.props.navigator.push({name: 'Home'});
+                }, 2000);
+            } else {
+                this.setState({animating: !this.state.animating});
             }
         });
     }
@@ -71,6 +81,8 @@ export default class Login extends Component {
                 <TouchableHighlight onPress={() => {this.props.navigator.push({name: 'Signup'});}}>
                     <Text style={{fontSize: 18, marginTop: 40, color: '#1ABC9C'}}>Sign up!</Text>
                 </TouchableHighlight>
+
+                <ActivityIndicator size="large" color="#1ABC9C" animating={this.state.animating} style={{marginTop: -270}}/>
             </View>
         )
     }
@@ -96,7 +108,7 @@ const styles = StyleSheet.create({
     },
     title: {
         color: '#1ABC9C',
-        fontSize: 36,
+        fontSize: 40,
         alignItems: 'center',
         justifyContent: 'center',
         fontWeight: 'bold',
