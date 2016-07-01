@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import Login from './src/scenes/Login';
 import Home from './src/scenes/Home';
+import Signup from './src/scenes/Signup';
 import app from './firebaseInit';
 
 class wazzaa_mobile extends Component {
@@ -25,6 +26,8 @@ class wazzaa_mobile extends Component {
                 return <Login navigator={navigator}/>
             case 'Home':
                 return <Home navigator={navigator}/>
+            case 'Signup':
+                return <Signup navigator={navigator}/>
         }
     }
     render() {
@@ -33,6 +36,7 @@ class wazzaa_mobile extends Component {
                 style={styles.container}
                 initialRoute={{name: 'Login', index: 0}}
                 renderScene={this.renderScene}
+                configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromRight}
             />
         );
     }
@@ -41,7 +45,7 @@ class wazzaa_mobile extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 60
+    marginTop: 40
   },
   welcome: {
     fontSize: 20,

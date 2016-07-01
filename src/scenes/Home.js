@@ -9,16 +9,15 @@ export default class Home extends Component {
             email: ''
         }
     }
-    // componentWillMount() {
-    //     AsyncStorage.getItem('User', (err, data) => {
-    //         this.setState({email: JSON.parse(data).email});
-    //     });
-    // }
+    componentWillMount() {
+        AsyncStorage.getItem('User', (err, data) => {
+            this.setState({email: JSON.parse(data).email});
+        });
+    }
 
     logout = () => {
         AsyncStorage.removeItem('User', (result) => {
             if(!result) {
-                console.log(AsyncStorage.getItem('User'));
                 this.props.navigator.replace({name: 'Login'});
             }
         })
