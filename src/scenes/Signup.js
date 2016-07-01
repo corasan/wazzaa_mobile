@@ -64,8 +64,9 @@ export default class Signup extends Component {
         return (
             <View >
                 <View style={styles.signupContainer}>
+                    <Text style={styles.title}>Sign up!</Text>
                     <TextInput
-                        wrapperStyle={{width: 272, marginBottom: 15}}
+                        wrapperStyle={{width: 272, marginBottom: 0}}
                         label="First Name" highlightColor={'#1ABC9C'}
                         value={this.state.fname} onChangeText={this.handleFirstName}
                         inputStyle={{paddingBottom: 2, paddingTop: 2, fontSize: 18}}
@@ -107,7 +108,7 @@ export default class Signup extends Component {
 
 const styles = StyleSheet.create({
     signupContainer: {
-        marginTop: 20,
+        marginTop: 40,
         alignItems: 'center'
     },
     wrapper: {
@@ -117,16 +118,13 @@ const styles = StyleSheet.create({
     signupBtn: {
         marginTop: 40,
         height: 60,
-        width: 180,
+        width: 160,
         backgroundColor: '#1ABC9C',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4
     },
     backBtn: {
-        // fontSize: 18,
-        // marginTop: 40,
-        // color: 'white',
         backgroundColor: '#D1D5D8',
         height: 40,
         width: 90,
@@ -134,5 +132,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 4,
         marginTop: 20
+    },
+    title: {
+        color: '#1ABC9C',
+        fontSize: 26,
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontWeight: 'bold'
     }
 });

@@ -49,6 +49,7 @@ export default class Login extends Component {
     render() {
         return (
             <View style={styles.loginContainer}>
+                <Text style={styles.title}>Wazzaa!</Text>
                 <TextInput
                     wrapperStyle={{width: 272, marginBottom: 20}}
                     label="Email" highlightColor={'#1ABC9C'}
@@ -87,10 +88,18 @@ const styles = StyleSheet.create({
     loginBtn: {
         marginTop: 40,
         height: 60,
-        width: 180,
+        width: 160,
         backgroundColor: '#1ABC9C',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4
+    },
+    title: {
+        color: '#1ABC9C',
+        fontSize: 36,
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontWeight: 'bold',
+        marginBottom: 30
     }
 });
