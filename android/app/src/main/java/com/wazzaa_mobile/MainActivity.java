@@ -1,7 +1,7 @@
 package com.wazzaa_mobile;
 
 import com.facebook.react.ReactActivity;
-import com.evollu.react.fa.FIRAnalyticsPackage;
+import com.xebia.reactnative.TabLayoutPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
@@ -35,8 +35,7 @@ public class MainActivity extends ReactActivity {
     @Override
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
-            new MainReactPackage(),
-            new FIRAnalyticsPackage()
+            new MainReactPackage()
         );
     }
 }

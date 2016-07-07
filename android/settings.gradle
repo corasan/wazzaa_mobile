@@ -1,5 +1,3 @@
 rootProject.name = 'wazzaa_mobile'
 
 include ':app'
-include ':react-native-firebase-analytics'
-project(':react-native-firebase-analytics').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-firebase-analytics/android')

@@ -10,7 +10,9 @@ import { View,
 export default class Toolbar extends Component {
     render() {
         return (
-            
+            <View>
+                
+            </View>
         )
     }
 }

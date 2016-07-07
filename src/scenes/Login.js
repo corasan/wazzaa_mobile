@@ -32,7 +32,7 @@ export default class Login extends Component {
                 setTimeout(() => {
                     this.setState({animating: !this.state.animating});
                     this.props.navigator.push({name: 'Home'});
-                }, 1000);
+                }, 2000);
             } else {
                 this.setState({animating: !this.state.animating});
             }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, AsyncStorage, TouchableHighlight } from 'react-native';
 import app from '../../firebaseInit';
-// import Toolbar from '../components/toolbar';
+import Toolbar from '../components/toolbar';
 
 export default class Home extends Component {
     constructor(props) {
@@ -26,6 +26,7 @@ export default class Home extends Component {
     render() {
         return (
             <View>
+            <Toolbar />
                 <Text>{this.state.email}</Text>
                 <TouchableHighlight onPress={this.logout}>
                     <Text>Logout</Text>

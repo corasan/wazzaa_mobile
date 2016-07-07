@@ -6,11 +6,11 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Navigator
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    Navigator
 } from 'react-native';
 import Login from './src/scenes/Login';
 import Home from './src/scenes/Home';
@@ -19,8 +19,6 @@ import app from './firebaseInit';
 
 class wazzaa_mobile extends Component {
     renderScene = (route, navigator) => {
-        let currentUser = app.auth().currentUser;
-        console.log(currentUser);
         switch(route.name) {
             case 'Login':
                 return <Login navigator={navigator}/>

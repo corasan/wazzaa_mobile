@@ -6,37 +6,45 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    Navigator
 } from 'react-native';
+import Login from './src/scenes/Login';
+import Home from './src/scenes/Home';
+import Signup from './src/scenes/Signup';
+import app from './firebaseInit';
 
 class wazzaa_mobile extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
+    renderScene = (route, navigator) => {
+        switch(route.name) {
+            case 'Login':
+                return <Login navigator={navigator}/>
+            case 'Home':
+                return <Home navigator={navigator}/>
+            case 'Signup':
+                return <Signup navigator={navigator}/>
+        }
+    }
+    render() {
+        return (
+            <Navigator
+                style={styles.container}
+                initialRoute={{name: 'Login', index: 0}}
+                renderScene={this.renderScene}
+                configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromRight}
+            />
+        );
+    }
   }
-}
 
-const styles = StyleSheet.create({
+  const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    marginTop: 0,
+    backgroundColor: '#EFEFEF'
   },
   welcome: {
     fontSize: 20,
@@ -48,6 +56,6 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-});
+  });
 
 AppRegistry.registerComponent('wazzaa_mobile', () => wazzaa_mobile);
