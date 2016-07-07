@@ -67,28 +67,28 @@ export default class Signup extends Component {
                     <Text style={styles.title}>Sign up!</Text>
                     <TextInput
                         wrapperStyle={{width: 272, marginBottom: 0}}
-                        label="First Name" highlightColor={'#1ABC9C'}
+                        label="First Name" highlightColor={'#00BFA5'}
                         value={this.state.fname} onChangeText={this.handleFirstName}
                         inputStyle={{paddingBottom: 2, paddingTop: 2, fontSize: 18}}
                         labelStyle={{fontSize: 16}}
                     />
                     <TextInput
                         wrapperStyle={{width: 272, marginBottom: 15}}
-                        label="Last Name" highlightColor={'#1ABC9C'}
+                        label="Last Name" highlightColor={'#00BFA5'}
                         value={this.state.lname} onChangeText={this.handleLastName}
                         inputStyle={{paddingBottom: 2, paddingTop: 2, fontSize: 18}}
                         labelStyle={{fontSize: 16}}
                     />
                     <TextInput
                         wrapperStyle={{width: 272, marginBottom: 15}}
-                        label="Email" highlightColor={'#1ABC9C'}
+                        label="Email" highlightColor={'#00BFA5'}
                         value={this.state.email} onChangeText={this.handleEmail}
                         inputStyle={{paddingBottom: 2, paddingTop: 2, fontSize: 18}}
                         labelStyle={{fontSize: 16}}
                     />
                     <TextInput
                         wrapperStyle={{width: 272, marginBottom: 15}}
-                        label="Password" highlightColor={'#1ABC9C'}
+                        label="Password" highlightColor={'#00BFA5'}
                         value={this.state.password} onChangeText={this.handlePassword}
                         secureTextEntry={true}
                         inputStyle={{paddingBottom: 2, paddingTop: 2, fontSize: 18}}
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         marginTop: 40,
         height: 60,
         width: 160,
-        backgroundColor: '#1ABC9C',
+        backgroundColor: '#00BFA5',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     title: {
-        color: '#1ABC9C',
+        color: '#00BFA5',
         fontSize: 26,
         alignItems: 'center',
         justifyContent: 'center',

@@ -62,14 +62,14 @@ export default class Login extends Component {
                 <Text style={styles.title}>Wazzaa!</Text>
                 <TextInput
                     wrapperStyle={{width: 272, marginBottom: 20}}
-                    label="Email" highlightColor={'#1ABC9C'}
+                    label="Email" highlightColor={'#00BFA5'}
                     value={this.state.email} onChangeText={this.handleEmail}
                     inputStyle={{paddingBottom: 2, paddingTop: 2, fontSize: 18}}
                     labelStyle={{fontSize: 16}}
                 />
                 <TextInput
                     wrapperStyle={{width: 272, marginBottom: 20}}
-                    label="Password" highlightColor={'#1ABC9C'}
+                    label="Password" highlightColor={'#00BFA5'}
                     value={this.state.password} onChangeText={this.handlePassword}
                     secureTextEntry={true}
                     inputStyle={{paddingBottom: 2, paddingTop: 2, fontSize: 18}}
@@ -79,10 +79,10 @@ export default class Login extends Component {
                     <Text style={{fontSize: 18, color: 'white'}}>Login</Text>
                 </TouchableHighlight>
                 <TouchableHighlight onPress={() => {this.props.navigator.push({name: 'Signup'});}}>
-                    <Text style={{fontSize: 18, marginTop: 40, color: '#1ABC9C'}}>Sign up!</Text>
+                    <Text style={{fontSize: 18, marginTop: 40, color: '#00BFA5'}}>Sign up!</Text>
                 </TouchableHighlight>
 
-                <ActivityIndicator size="large" color="#1ABC9C" animating={this.state.animating} style={{marginTop: -270}}/>
+                <ActivityIndicator size="large" color="#00BFA5" animating={this.state.animating} style={{marginTop: -270}}/>
             </View>
         )
     }
@@ -101,13 +101,13 @@ const styles = StyleSheet.create({
         marginTop: 40,
         height: 60,
         width: 160,
-        backgroundColor: '#1ABC9C',
+        backgroundColor: '#00BFA5',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4
     },
     title: {
-        color: '#1ABC9C',
+        color: '#00BFA5',
         fontSize: 40,
         alignItems: 'center',
         justifyContent: 'center',
