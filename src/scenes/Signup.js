@@ -36,12 +36,12 @@ export default class Signup extends Component {
     signup = () => {
         app.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then((data) => {
-            let wazzaaId = this.state.email.replace('.com', '-wazzaa');
+            let username = this.state.email.replace('.com', '-wazzaa');
             app.database().ref('users/' + data.uid).set({
                 first_name: this.state.fname,
                 last_name: this.state.lname,
                 email: this.state.email,
-                wazzaaID: wazzaaId
+                username: username
             });
         }).then((wazzaaID) => {
             app.database().ref('users/' + wazzaaID).on('value', (snapshot) => {
