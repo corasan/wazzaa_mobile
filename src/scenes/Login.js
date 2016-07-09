@@ -31,7 +31,7 @@ export default class Login extends Component {
                 this.setState({animating: true});
                 setTimeout(() => {
                     this.setState({animating: !this.state.animating});
-                    this.props.navigator.push({name: 'Home'});
+                    this.props.navigator.resetTo({name: 'Home'});
                 }, 2000);
             } else {
                 this.setState({animating: !this.state.animating});
@@ -50,7 +50,7 @@ export default class Login extends Component {
         app.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((data) => {
             AsyncStorage.setItem('User', JSON.stringify(data));
-            this.props.navigator.push({name: 'Home'});
+            this.props.navigator.resetTo({name: 'Home'});
         }).catch(function(error) {
             Alert.alert('Login Error', error.message);
         });

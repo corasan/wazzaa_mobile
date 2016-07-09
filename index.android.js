@@ -34,7 +34,7 @@ class wazzaa_mobile extends Component {
                 style={styles.container}
                 initialRoute={{name: 'Login', index: 0}}
                 renderScene={this.renderScene}
-                configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromRight}
+                configureScene={(route, routeStack) => Navigator.SceneConfigs.PushFromRight}
             />
         );
     }

@@ -36,12 +36,12 @@ export default class Signup extends Component {
     signup = () => {
         app.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
         .then((data) => {
-            return wazzaaID = data.uid.substring(0,15) + '-wazzaaID';
-            app.database().ref('users/' + data.uid.substring(0,10) + '-wazzaaID').set({
+            let wazzaaId = this.state.email.replace('.com', '-wazzaa');
+            app.database().ref('users/' + data.uid).set({
                 first_name: this.state.fname,
                 last_name: this.state.lname,
                 email: this.state.email,
-                wazzaaID: wazzaaID
+                wazzaaID: wazzaaId
             });
         }).then((wazzaaID) => {
             app.database().ref('users/' + wazzaaID).on('value', (snapshot) => {
@@ -51,7 +51,7 @@ export default class Signup extends Component {
             app.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then((data) => {
                 AsyncStorage.setItem('User', JSON.stringify(data));
-                this.props.navigator.push({name: 'Home'});
+                this.props.navigator.resetTo({name: 'Home'});
             }).catch(function(error) {
                 Alert.alert('Login Error', error.message);
             });
