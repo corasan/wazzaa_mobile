@@ -12,6 +12,7 @@ import {
     View,
     Navigator
 } from 'react-native';
+import { Scene, Router } from 'react-native-router-flux';
 import Login from './src/scenes/Login';
 import Home from './src/scenes/Home';
 import Signup from './src/scenes/Signup';
@@ -30,12 +31,19 @@ class wazzaa_mobile extends Component {
     }
     render() {
         return (
-            <Navigator
-                style={styles.container}
-                initialRoute={{name: 'Login', index: 0}}
-                renderScene={this.renderScene}
-                configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromRight}
-            />
+            // <Navigator
+            //     style={styles.container}
+            //     initialRoute={{name: 'Login', index: 0}}
+            //     renderScene={this.renderScene}
+            //     configureScene={(route, routeStack) => Navigator.SceneConfigs.FloatFromRight}
+            // />
+            <Router>
+                <Scene key="root" hideNavBar>
+                    <Scene key="login" component={Login} />
+                    <Scene key="signup" component={Signup} />
+                    <Scene key="home" title="Wazzaa" component={Home} tabs={true} hideBackImage={true}/>
+                </Scene>
+            </Router>
         );
     }
 }
@@ -44,7 +52,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 0,
-    backgroundColor: '#EFEFEF'
+    backgroundColor: '#FAFAFA'
   },
   welcome: {
     fontSize: 20,

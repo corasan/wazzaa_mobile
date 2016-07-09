@@ -10,6 +10,7 @@ import { View,
 } from 'react-native';
 import TextInput from 'react-native-md-textinput';
 import Overlay from 'react-native-overlay';
+import { Actions } from 'react-native-router-flux';
 
 export default class Login extends Component {
     state: {
@@ -31,7 +32,8 @@ export default class Login extends Component {
                 this.setState({animating: true});
                 setTimeout(() => {
                     this.setState({animating: !this.state.animating});
-                    this.props.navigator.push({name: 'Home'});
+                    // this.props.navigator.push({name: 'Home'});
+                    Actions.home();
                 }, 2000);
             } else {
                 this.setState({animating: !this.state.animating});
@@ -50,10 +52,15 @@ export default class Login extends Component {
         app.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then((data) => {
             AsyncStorage.setItem('User', JSON.stringify(data));
-            this.props.navigator.push({name: 'Home'});
+            // this.props.navigator.push({name: 'Home'});
+            Actions.home();
         }).catch(function(error) {
             Alert.alert('Login Error', error.message);
         });
+    }
+
+    signupScene = () => {
+        Actions.signup();
     }
 
     render() {
@@ -78,11 +85,13 @@ export default class Login extends Component {
                 <TouchableHighlight style={styles.loginBtn} onPress={this.login}>
                     <Text style={{fontSize: 18, color: 'white'}}>Login</Text>
                 </TouchableHighlight>
-                <TouchableHighlight onPress={() => {this.props.navigator.push({name: 'Signup'});}}>
+                <TouchableHighlight onPress={this.signupScene}>
                     <Text style={{fontSize: 18, marginTop: 40, color: '#00BFA5'}}>Sign up!</Text>
                 </TouchableHighlight>
 
-                <ActivityIndicator size="large" color="#00BFA5" animating={this.state.animating} style={{marginTop: -270}}/>
+                <ActivityIndicator size="large" color="#00BFA5" animating={this.state.animating}
+                    style={{marginTop: -270}}
+                />
             </View>
         )
     }
@@ -104,7 +113,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#00BFA5',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 4
+        borderRadius: 2
     },
     title: {
         color: '#00BFA5',

@@ -1,7 +1,7 @@
 package com.wazzaa_mobile;
 
 import com.facebook.react.ReactActivity;
-import com.xebia.reactnative.TabLayoutPackage;
+// import com.xebia.reactnative.TabLayoutPackage;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 

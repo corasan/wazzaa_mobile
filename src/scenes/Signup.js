@@ -9,6 +9,7 @@ import { View,
     AsyncStorage
 } from 'react-native';
 import TextInput from 'react-native-md-textinput';
+import { Actions } from 'react-native-router-flux';
 
 export default class Signup extends Component {
     constructor(props) {
@@ -97,7 +98,7 @@ export default class Signup extends Component {
                     <TouchableHighlight style={styles.signupBtn} onPress={this.signup}>
                         <Text style={{fontSize: 18, color: 'white'}}>Signup</Text>
                     </TouchableHighlight>
-                    <TouchableHighlight style={styles.backBtn} onPress={() => {this.props.navigator.jumpBack();}}>
+                    <TouchableHighlight style={styles.backBtn} onPress={Actions.login()}>
                         <Text style={{fontSize: 16, color: '#75706B'}}>Cancel</Text>
                     </TouchableHighlight>
                 </View>
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#00BFA5',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 4
+        borderRadius: 2
     },
     backBtn: {
         backgroundColor: '#D1D5D8',
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
         width: 90,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 4,
+        borderRadius: 2,
         marginTop: 20
     },
     title: {
