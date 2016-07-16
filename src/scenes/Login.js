@@ -12,10 +12,6 @@ import TextInput from 'react-native-md-textinput';
 import Overlay from 'react-native-overlay';
 
 export default class Login extends Component {
-    state: {
-        email: String,
-        password: String
-    }
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +28,7 @@ export default class Login extends Component {
                 setTimeout(() => {
                     this.setState({animating: !this.state.animating});
                     this.props.navigator.resetTo({name: 'Home'});
-                }, 2000);
+                }, 1000);
             } else {
                 this.setState({animating: !this.state.animating});
             }
