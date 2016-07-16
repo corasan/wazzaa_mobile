@@ -43,7 +43,7 @@ class wazzaa_mobile extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 0,
+    marginTop: 50,
     backgroundColor: '#EFEFEF'
   },
   welcome: {

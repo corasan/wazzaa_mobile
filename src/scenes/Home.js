@@ -13,12 +13,12 @@ export default class Home extends Component {
     }
 
     componentWillMount() {
-        app.database().ref('messages/').on('child_added', function(snapshot) {
+        app.database().ref('messages/one').on('value', function(snapshot) {
             let data = snapshot.val();
-            for(let i in data) {
-                this.state.messages.push(data[i]);
-            }
-            this.setState({messages: this.state.messages});
+            // for(let i in data) {
+            //     this.state.messages.push(data[i]);
+            // }
+            this.setState({messages: data});
         }.bind(this));
     }
 
@@ -31,7 +31,7 @@ export default class Home extends Component {
     // }
     render() {
         return (
-            <View>
+            <View style={{marginTop: 50}}>
                 <MessagesList messages={this.state.messages}/>
             </View>
         )

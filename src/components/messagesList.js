@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage, TouchableHighlight, ListView } from 'react-native';
+import { View, Text, AsyncStorage, TouchableHighlight, ListView, StyleSheet } from 'react-native';
 import app from '../../firebaseInit';
 
 export default class MessagesList extends Component {
@@ -20,16 +20,16 @@ export default class MessagesList extends Component {
     componentDidMount() {
         this.setState({dataSource: this.getDataSource(this.props.messages)});
     }
-
+    
     componentWillReceiveProps(props) {
         this.setState({dataSource: this.getDataSource(props.messages)});
     }
 
     renderRows = (data) => {
         return (
-            <View style={{borderColor: 'black', borderWidth: 2, marginTop: 50}}>
+            <View style={{marginLeft: 10, marginBottom: 15}}>
                 <Text>{data.sender}</Text>
-                <Text>{data.text}</Text>
+                <Text style={styles.message}>{data.text}</Text>
             </View>
         )
     }
@@ -44,3 +44,16 @@ export default class MessagesList extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    message: {
+        marginTop: 5,
+        width: 250,
+        backgroundColor: 'white',
+        paddingTop: 5,
+        paddingBottom: 5,
+        paddingRight: 12,
+        paddingLeft: 5,
+        borderRadius: 5
+    }
+})
