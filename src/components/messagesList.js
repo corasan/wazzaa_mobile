@@ -5,17 +5,11 @@ import app from '../../firebaseInit';
 export default class MessagesList extends Component {
     constructor(props) {
         super(props);
-        // const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2 });
-        // this.state = {
-        //     // dataSource: ds.cloneWithRows([{text: 'hi', sender: 'henry'}, {text: 'hello', sender: 'corasan'}])
-        //     dataSource: ds.cloneWithRows(props.messages)
-        // }
         this.state = {
             dataSource: new ListView.DataSource({
                 rowHasChanged: (row1, row2) => row1 !== row2,
             })
         }
-        console.log('2) Props:', this.props.messages);
     }
 
     getDataSource(messages: Array<any>): ListView.DataSource {

@@ -20,7 +20,6 @@ export default class Home extends Component {
             }
             this.setState({messages: this.state.messages});
         }.bind(this));
-        console.log('1) Array:', this.state.messages);
     }
 
     // logout = () => {
