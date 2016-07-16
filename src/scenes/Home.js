@@ -13,23 +13,24 @@ export default class Home extends Component {
     }
 
     componentWillMount() {
-        app.database().ref('messages/').orderByKey().on('value', function(snapshot) {
-            let data = snapshot.val();
-            console.log('snap:', data);
-            this.setState({messages: data});
+        app.database().ref('messages').on('value', function(data) {
+            this.setState({messages: data.val()});
         }.bind(this));
     }
 
-    // logout = () => {
-    //     AsyncStorage.removeItem('User', (result) => {
-    //         if(!result) {
-    //             this.props.navigator.replace({name: 'Login'});
-    //         }
-    //     })
-    // }
+    logout = () => {
+        AsyncStorage.removeItem('User', (result) => {
+            if(!result) {
+                this.props.navigator.replace({name: 'Login'});
+            }
+        })
+    }
     render() {
         return (
             <View style={{marginTop: 50, flex: 1}}>
+                <TouchableHighlight onPress={this.logout}>
+                    <Text>Logout</Text>
+                </TouchableHighlight>
                 <MessagesList messages={this.state.messages}/>
                 <MessageInput />
             </View>

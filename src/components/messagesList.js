@@ -52,14 +52,11 @@ export default class MessagesList extends Component {
 const styles = StyleSheet.create({
     message: {
         marginBottom: 10,
+        marginTop: 5,
         width: 250,
         backgroundColor: 'white',
         padding: 10,
         borderRadius: 4,
         elevation: 3,
-        shadowColor: '#000000',
-        shadowOffset: {width: 0, height: -10},
-        shadowOpacity: 0.1,
-        shadowRadius: 4
     }
 })
