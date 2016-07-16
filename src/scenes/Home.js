@@ -13,8 +13,9 @@ export default class Home extends Component {
     }
 
     componentWillMount() {
-        app.database().ref('messages/one').orderByKey().on('value', function(snapshot) {
+        app.database().ref('messages/').orderByKey().on('value', function(snapshot) {
             let data = snapshot.val();
+            console.log('snap:', data);
             this.setState({messages: data});
         }.bind(this));
     }

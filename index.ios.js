@@ -41,21 +41,21 @@ class wazzaa_mobile extends Component {
   }
 
   const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 0,
-    backgroundColor: '#FAFAFA'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+      container: {
+        flex: 1,
+        marginTop: 0,
+        backgroundColor: '#EFEBE9'
+      },
+      welcome: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+      },
+      instructions: {
+        textAlign: 'center',
+        color: '#333333',
+        marginBottom: 5,
+      },
   });
 
 AppRegistry.registerComponent('wazzaa_mobile', () => wazzaa_mobile);

@@ -15,7 +15,7 @@ export default class MessageInput extends Component {
     }
 
     sendMessage = () => {
-        app.database().ref('messages/one').push({
+        app.database().ref('messages/').push({
             sender: 'user',
             text: this.state.text
         });
@@ -24,9 +24,9 @@ export default class MessageInput extends Component {
 
     render() {
         return(
-            <View style={{flexDirection: 'row', backgroundColor: '#E0E0E0'}}>
+            <View style={styles.inputContainer}>
                 <View style={styles.input}>
-                    <TextInput value={this.state.text} onChangeText={this.handleText} style={{width: 290}}/>
+                    <TextInput value={this.state.text} onChangeText={this.handleText} style={{width: 290, fontSize: 16}}/>
                 </View>
                 <TouchableHighlight onPress={this.sendMessage} style={styles.sendBtn}>
                     <Text style={{color: 'white', fontWeight: '900'}}>Send</Text>
@@ -37,6 +37,12 @@ export default class MessageInput extends Component {
 }
 
 const styles = StyleSheet.create({
+    inputContainer: {
+        elevation: 4,
+        flexDirection: 'row',
+        backgroundColor: '#E0E0E0',
+    },
+
     input: {
         borderStyle: 'solid',
         marginTop: 20,
@@ -46,7 +52,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         marginLeft: 8,
         borderRadius: 4,
-        backgroundColor: '#FFFFFF'
+        backgroundColor: '#FFFFFF',
     },
     sendBtn: {
         backgroundColor: '#00BFA5',
