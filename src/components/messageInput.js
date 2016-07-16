@@ -14,15 +14,24 @@ export default class MessageInput extends Component {
         this.setState({text});
     }
 
+    sendMessage = () => {
+        app.database().ref('messages/one').push({
+            sender: 'user',
+            text: this.state.text
+        }, function(err) {
+            console.log(err);
+        });
+    }
+
     render() {
         return(
-            <View style={{flex: 1}}>
-                <ScrollView>
-                    <View style={styles.input}>
-                        <TextInput value={this.state.text} onChangeText={this.handleText} />
-                    </View>
-                    <Text>Hello</Text>
-                </ScrollView>
+            <View style={{flexDirection: 'row', backgroundColor: '#E0E0E0'}}>
+                <View style={styles.input}>
+                    <TextInput value={this.state.text} onChangeText={this.handleText} style={{width: 290}}/>
+                </View>
+                <TouchableHighlight onPress={this.sendMessage} style={styles.sendBtn}>
+                    <Text style={{color: 'white', fontWeight: '900'}}>Send</Text>
+                </TouchableHighlight>
             </View>
         )
     }
@@ -30,11 +39,24 @@ export default class MessageInput extends Component {
 
 const styles = StyleSheet.create({
     input: {
-        borderColor: 'black',
-        borderWidth: 2,
         borderStyle: 'solid',
         marginTop: 20,
         paddingTop: -10,
         paddingBottom: -10,
+        width: 290,
+        marginBottom: 20,
+        marginLeft: 8,
+        borderRadius: 4,
+        backgroundColor: '#FFFFFF'
+    },
+    sendBtn: {
+        backgroundColor: '#00BFA5',
+        width: 50,
+        marginLeft: 6,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 44,
+        marginTop: 20,
+        borderRadius: 4
     }
 });

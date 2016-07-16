@@ -44,7 +44,7 @@ class wazzaa_mobile extends Component {
   container: {
     flex: 1,
     marginTop: 0,
-    backgroundColor: '#EFEFEF'
+    backgroundColor: '#FAFAFA'
   },
   welcome: {
     fontSize: 20,

@@ -20,7 +20,7 @@ export default class MessagesList extends Component {
     componentDidMount() {
         this.setState({dataSource: this.getDataSource(this.props.messages)});
     }
-    
+
     componentWillReceiveProps(props) {
         this.setState({dataSource: this.getDataSource(props.messages)});
     }
@@ -50,10 +50,8 @@ const styles = StyleSheet.create({
         marginTop: 5,
         width: 250,
         backgroundColor: 'white',
-        paddingTop: 5,
-        paddingBottom: 5,
-        paddingRight: 12,
-        paddingLeft: 5,
-        borderRadius: 5
+        borderColor: 'black',
+        borderWidth: 2,
+        borderStyle: 'solid'
     }
 })

@@ -13,11 +13,8 @@ export default class Home extends Component {
     }
 
     componentWillMount() {
-        app.database().ref('messages/one').on('value', function(snapshot) {
+        app.database().ref('messages/one').orderByKey().on('value', function(snapshot) {
             let data = snapshot.val();
-            // for(let i in data) {
-            //     this.state.messages.push(data[i]);
-            // }
             this.setState({messages: data});
         }.bind(this));
     }
@@ -31,8 +28,9 @@ export default class Home extends Component {
     // }
     render() {
         return (
-            <View style={{marginTop: 50}}>
+            <View style={{marginTop: 50, flex: 1}}>
                 <MessagesList messages={this.state.messages}/>
+                <MessageInput />
             </View>
         )
     }
