@@ -28,7 +28,7 @@ export default class MessagesList extends Component {
     renderRows = (data) => {
         return (
             <View style={{marginLeft: 10, marginBottom: 15}}>
-                <Text>{data.sender}</Text>
+                <Text style={{fontSize: 16, fontWeight: '900'}}>{data.sender}</Text>
                 <Text style={styles.message}>{data.text}</Text>
             </View>
         )
@@ -47,6 +47,7 @@ export default class MessagesList extends Component {
 
 const styles = StyleSheet.create({
     message: {
+        fontSize: 16,
         marginTop: 5,
         width: 250,
         backgroundColor: 'white',

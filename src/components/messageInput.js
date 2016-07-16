@@ -18,9 +18,8 @@ export default class MessageInput extends Component {
         app.database().ref('messages/one').push({
             sender: 'user',
             text: this.state.text
-        }, function(err) {
-            console.log(err);
         });
+        this.setState({text: ''});
     }
 
     render() {
